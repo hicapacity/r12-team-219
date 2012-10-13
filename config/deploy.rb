@@ -6,7 +6,7 @@ set :application, "nexus"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/sites/#{application}"
 set :deploy_via, :remote_cache
-set :use_sudo, true
+set :use_sudo, false 
 
 set :scm, "git"
 set :repository, "git@github.com:railsrumble/r12-team-219.git"

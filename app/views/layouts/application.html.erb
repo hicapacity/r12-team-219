@@ -7,8 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="container">
+    <%- flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    <%- end -%>
+    <p><%= link_to 'Home', root_path %></p>
 
-<%= yield %>
+    <% if user_signed_in? -%>
+      <div id="user_login_box" style = "float:right">
+        Hello. 
+        <% if current_user.nick_name != nil && current_user.nick_name != ""%>
+          <%= current_user.nick_name %>
+        <% else %>
+          <%= current_user.first_name %> 
+          <%= current_user.last_name %> |
+        <% end -%>
+        <%= link_to 'My info', edit_user_registration_path %> |
+        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+      </div>
+    <% else %>
+      <div id="user_signup_box" style = "float:right">
+        <%= link_to 'Sign up', new_user_registration_path %> | 
+        <%= link_to 'Sign in', new_user_session_path %> 
+    <% end -%>
+    <div style="clear:both"></div>
+  </div>
+
+  <%= yield %>
 
 </body>
 </html>

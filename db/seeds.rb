@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+JSON.parse(open("#{Rails.root}/db/seeds/pages.json").read).each do |json|
+    page = Page.new(json)
+    page.save
+end

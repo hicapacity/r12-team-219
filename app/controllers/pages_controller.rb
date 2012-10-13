@@ -5,6 +5,5 @@ class PagesController < ApplicationController
   end
   def show
     @page = Page.where(:url_path => params[:url_path]).first
-    # render :text => page.title
   end
 end

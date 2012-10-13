@@ -1,6 +1,6 @@
 Nexus::Application.routes.draw do
   match 'pages' => 'pages#index'
-  match 'pages/*path' => 'pages#show'
+  match 'pages/*url_path' => 'pages#show'
 
   root :to => 'home#index'
 

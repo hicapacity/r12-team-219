@@ -1,10 +1,10 @@
-<% unless @page %>
-<a href="#">Create</a>
-<% else %>
+<% if @page %>
 <div>
   <a href="#">Edit</a>
 </div>
 <div>
   <%= @page.markdown %>
 </div>
+<% else %>
+<a href="#">Create</a>
 <% end %>

@@ -1,3 +1,5 @@
+# curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d ' {"page":{"title":"testpage","author":"nobody","markdown":"asdf"}} ' http://0.0.0.0:3000/pages/foo/bar
+
 class PagesController < ApplicationController
   respond_to :html, :json
   def index

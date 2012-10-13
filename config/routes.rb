@@ -1,5 +1,7 @@
 Nexus::Application.routes.draw do
+  match 'pages' => 'pages#index'
   match 'pages/*path' => 'pages#show'
+
   root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"

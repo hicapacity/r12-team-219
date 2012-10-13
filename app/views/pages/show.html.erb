@@ -1,10 +1,22 @@
+<script type="text/javascript">
+$(function() {
+ // Handler for .ready() called.
+ jQuery('#source').val('<%= @page.markdown %>');
+
+ // Forcing Hallo to update HTML after loading the markdown
+ var e = jQuery.Event('keyup');
+ jQuery('#source').trigger(e);
+});
+</script>
+
 <% if @page %>
 <div>
   <a href="#">Edit</a>
 </div>
-<div>
-  <%= @page.markdown %>
+<div class="editable">
 </div>
+<textarea id="source">
+</textarea>
 <% else %>
 <a href="#">Create</a>
 <% end %>

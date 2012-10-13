@@ -14,12 +14,14 @@
 ActiveRecord::Schema.define(:version => 20121013002215) do
 
   create_table "pages", :force => true do |t|
-    t.string   "path"
+    t.string   "url_path"
     t.string   "title"
     t.string   "author"
     t.text     "markdown"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "pages", ["url_path"], :name => "index_pages_on_url_path", :unique => true
 
 end

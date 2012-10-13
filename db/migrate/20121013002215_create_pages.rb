@@ -8,5 +8,6 @@ class CreatePages < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index(:pages, :path, { :unique => true })
   end
 end

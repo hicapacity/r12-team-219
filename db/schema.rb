@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(:version => 20121013002215) do
 
   create_table "pages", :force => true do |t|
+    t.string   "path"
     t.string   "title"
     t.string   "author"
     t.text     "markdown"
-    t.string   "timestamps"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

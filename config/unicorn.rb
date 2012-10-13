@@ -5,5 +5,5 @@ stderr_path "#{root}/log/nexus.log"
 stdout_path "#{root}/log/nexus.log"
 
 listen "/tmp/unicorn.nexus.sock"
-worker_processes 2
+worker_processes 4
 timeout 30

@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20121013002215) do
 
   create_table "pages", :force => true do |t|
-    t.string   "url_path",   :null => false
+    t.string   "url_path"
     t.string   "title"
     t.string   "author"
     t.text     "markdown"

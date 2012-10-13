@@ -10,8 +10,10 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = Page.create(params[:page])
-    # @page.url_path = params[:url_path]
+    page_params = { :url_path => params[:url_path] }
+    page_params.merge!(params[:page])
+
+    @page = Page.create(page_params)
     @page.save
   end
 end

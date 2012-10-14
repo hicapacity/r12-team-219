@@ -3,9 +3,19 @@
     "url_path": "hallojs",
     "commits_attributes": [
       {
-        "oid": "testoid1",
+        "oid": "commit1",
         "title": "hallojs",
         "markdown": "Please send an e-mail to [developers@plataformatec.com.br]"
+      },
+      {
+        "oid": "commit2",
+        "title": "hello",
+        "markdown": "Changed the title"
+      },
+      {
+        "oid": "commit3",
+        "title": "hello2",
+        "markdown": "3rd commit"
       }
     ]
   },

@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.where(:url_path => params[:url_path]).first
+    @url_path_components = params[:url_path].split('/')
   end
 
   def create

@@ -16,6 +16,6 @@ class Page < ActiveRecord::Base
   protected
 
   def get_latest_version
-    @latest_commit = self.commits.ordered_by_date.first
+    @latest_commit = self.commits.first
   end
 end

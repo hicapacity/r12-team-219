@@ -1,11 +1,29 @@
 [
   {
-    "url_path": "hallojs"
+    "url_path": "hallojs",
+    "commits_attributes": [
+      {
+        "oid": "testoid",
+        "title": "hallojs"
+      }
+    ]
   },
   {
-    "url_path": "hallojs\/foo"
+    "url_path": "hallojs\/foo",
+    "commits_attributes": [
+      {
+        "oid": "testoid",
+        "title": "foo"
+      }
+    ]
   },
   {
-    "url_path": "hallojs\/bar"
+    "url_path": "hallojs\/bar",
+    "commits_attributes": [
+      {
+        "oid": "testoid",
+        "title": "bar"
+      }
+    ]
   }
 ]

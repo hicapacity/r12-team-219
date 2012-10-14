@@ -1,4 +1,5 @@
 class Page < ActiveRecord::Base
   has_many :commits
-  attr_accessible :url_path, :timestamps 
+  accepts_nested_attributes_for :commits
+  attr_accessible :url_path, :timestamps, :commits_attributes
 end

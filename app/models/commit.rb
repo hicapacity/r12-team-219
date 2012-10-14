@@ -20,7 +20,7 @@ class Commit < ActiveRecord::Base
       repo = Rugged::Repository.new(Rails.root.join('..', 'wikifiles').to_s)
       commit = repo.lookup oid
       blob = commit.tree
-      path = Pathname.new page.url_path
+      path = Pathname.new(page.url_path + '.md')
       path.each_filename do |part|
         blob = blob.find {|entry| entry[:name] == part}
       end
@@ -52,15 +52,26 @@ class Commit < ActiveRecord::Base
       master_ref = Rugged::Reference.lookup repo, 'refs/heads/master'
       tree = repo.lookup(master_ref.target).tree
       path = Pathname.new(page.url_path).each_filename.to_a
-      filename = path.pop
+      filename = path.pop + '.md'
+      trees = []
       path.each do |part|
-        tree = tree.find {|entry| entry[:name] == part}
+        trees.unshift([part, tree])
+        unless tree.nil?
+          tree_entry = tree.find {|entry| entry[:name] == part}
+          tree = tree_entry.nil?() ? nil : repo.lookup(tree_entry[:oid])
+        end
       end
       
-      # add blob to tree
-      tree = Rugged::Tree::Builder.new tree
-      tree << {:type => :blob, :name => filename, :oid => blob_oid, :filemode => 33188}
-      tree_id = tree.write repo
+      # add blob to tree, and modify parent trees
+      builder = tree.nil?() ? Rugged::Tree::Builder.new() : Rugged::Tree::Builder.new(tree)
+      builder << {:type => :blob, :name => filename, :oid => blob_oid, :filemode => 33188}
+      tree_id = builder.write repo
+      trees.each do |parttree|
+        part, tree = parttree
+        builder = tree.nil?() ? Rugged::Tree::Builder.new() : Rugged::Tree::Builder.new(tree)
+        builder << {:type => :tree, :name => part, :oid => tree_id, :filemode => 16384}
+        tree_id = builder.write repo
+      end
 
       author = "#{user.first_name} #{user.last_name}".strip
       author = user.email if author.blank?

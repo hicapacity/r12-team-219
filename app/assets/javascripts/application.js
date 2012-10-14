@@ -16,4 +16,3 @@
 //= require showdown
 //= require to-markdown
 //= require editor
-//= require_tree .

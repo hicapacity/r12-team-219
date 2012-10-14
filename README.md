@@ -13,7 +13,7 @@ git init --bare
 cd ..
 git clone -l wikifiles wikifiles2
 cd wikifiles2
-git commit --allow-empty
+git commit --allow-empty -m "Initial"
 git push origin master
 ```
 

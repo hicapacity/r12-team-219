@@ -9,9 +9,9 @@ group :development do
   gem 'sqlite3'
 end
 
-group :production do
-  gem "mysql2"
-end
+#group :production do
+#  gem "mysql2"
+#end
 
 gem 'devise'
 
@@ -36,7 +36,7 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-gem 'unicorn'
+#gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'

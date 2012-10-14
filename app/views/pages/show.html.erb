@@ -7,12 +7,12 @@
   </li>
 </ul>
 <% if @page %>
+<script type="text/javascript" src="/assets/highlight.pack.js"></script>
 <script type="text/javascript" src="/assets/editor.js"></script>
 <script type="text/javascript">
 $(function() {
   // Handler for .ready() called.
   $('#source').val(<%= raw(@page.markdown.to_json) %>);
-  // $('#source').val('hello');
 
   // Forcing Hallo to update HTML after loading the markdown
   var e = $.Event('keyup');
@@ -31,6 +31,8 @@ $(function() {
  $('#save').click(saveMarkdown);
 
  $('#cancel').click(endEditing);
+
+ $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 });
 
 function endEditing() {

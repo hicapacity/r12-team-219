@@ -14,6 +14,12 @@ textarea#source {
 	margin: 5px 0px 5px 0px;
 }
 
+[contenteditable="true"].inEditMode {
+    outline-style: auto;
+    outline-width: 3px;
+    outline-color: #111111;
+}
+
 #breadcrumbs{
   background: #eee;
   border-width: 1px;

@@ -7,8 +7,9 @@
   </li>
 </ul>
 <% if @page %>
-<script type="text/javascript" src="/assets/highlight.pack.js"></script>
-<script type="text/javascript" src="/assets/editor.js"></script>
+<%= javascript_include_tag "highlight.pack" %>
+<%= javascript_include_tag "editor" %>
+
 <script type="text/javascript">
 $(function() {
   // Handler for .ready() called.

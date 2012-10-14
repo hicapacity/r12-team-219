@@ -1,7 +1,7 @@
-<ul class="breadcrumb">
+<ul id="breadcrumbs">
   <li><a href="/pages">Home</a>
   <% @url_path_components.each do |pc| %>
-  <span class="divider">/</span></li>
+  </li>
   <li><a href="#"><%= pc %></a>
   <% end %>
   </li>
@@ -12,6 +12,7 @@
 $(function() {
   // Handler for .ready() called.
   $('#source').val(<%= raw(@page.markdown.to_json) %>);
+  // $('#source').val('hello');
 
   // Forcing Hallo to update HTML after loading the markdown
   var e = $.Event('keyup');

@@ -18,17 +18,19 @@ $(function() {
 </script>
 
 <% if @page %>
-<% if user_signed_in? %>
-<div>
-  <a id="edit" href="#" class="btn btn-primary">Edit</a>
-  <a id="save" href="#" class="btn btn-primary">Save</a>
-  <a id="cancel" href="#" class="btn">Cancel</a>
-</div>
-<%end%>
+  <% if user_signed_in? %>
+  <div>
+   <a id="edit" href="#" class="btn btn-primary">Edit</a>
+   <a id="save" href="#" class="btn btn-primary">Save</a>
+   <a id="cancel" href="#" class="btn">Cancel</a>
+  </div>
+  <%end%>
 <textarea id="source">
 </textarea>
 <div id="content" class="editable">
 </div>
 <% else %>
-<a href="#" class="btn btn-primary">Create</a>
+  <% if user_signed_in? %>
+    <a href="#" class="btn btn-primary">Create</a>
+  <% end %>
 <% end %>

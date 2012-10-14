@@ -93,3 +93,8 @@ textarea#source {
 #breadcrumbs .current::before{
   content: normal;  
 }
+
+.mod-text {
+  color: #aaa;
+  font-style: oblique;
+}

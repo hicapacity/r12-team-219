@@ -21,14 +21,18 @@ $(function() {
   endEditing();
 
  $('#edit').click(function() {
-  $('#source').show();
+  // $('#source').show();
   $('#content').hallo({editable: true});
   $('#edit').hide();
   $('#save').show();
+  $('#show-md-editor').show();
   $('#cancel').show();
  });
 
  $('#save').click(saveMarkdown);
+ $('#show-md-editor').click(function() {
+   $('#source').toggle()
+ });
 
  $('#cancel').click(endEditing);
 
@@ -38,6 +42,7 @@ $(function() {
 function endEditing() {
   $('#edit').show();
   $('#save').hide();
+  $('#show-md-editor').hide();
   $('#cancel').hide();
   $('#source').hide();
   $('#content').hallo({editable: false});
@@ -53,11 +58,14 @@ function saveMarkdown() {
 }
 
 </script>
-Edited by <%= @page.author.email %> at <%= @page.updated_at %>
+<div class="mod-text">
+  Edited by <%= @page.author.email %> at <%= @page.updated_at %>
+</div>
 <% if user_signed_in? %>
 <div>
   <a id="edit" href="#" class="btn btn-primary">Edit</a>
   <a id="save" href="#" class="btn btn-primary">Save</a>
+  <a id="show-md-editor" href="#" class="btn btn-primary">Markdown</a>
   <a id="cancel" href="#" class="btn">Cancel</a>
 </div>
 <%end%>

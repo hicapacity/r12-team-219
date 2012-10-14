@@ -62,16 +62,17 @@ function saveMarkdown() {
   <span class="label"><%= @page.author.email %></span> 
   edited at
   <span class="mod-date"><%= @page.updated_at.strftime("%I:%M%P %B %d, %Y") %></span>
-</div>
 
 <% if user_signed_in? %>
-<div>
-  <a id="edit" href="#" class="btn btn-primary">Edit</a>
-  <a id="save" href="#" class="btn btn-primary">Save</a>
-  <a id="show-md-editor" href="#" class="btn">Show/Hide Markdown</a>
-  <a id="cancel" href="#" class="btn">Cancel</a>
-</div>
+  <span style="margin-left: 20px">
+  <a id="edit" href="#" class="btn btn-mini btn-primary">Edit</a>
+  <a id="save" href="#" class="btn btn-mini btn-primary">Save</a>
+  <a id="show-md-editor" href="#" class="btn btn-mini">Show/Hide Markdown</a>
+  <a id="cancel" href="#" class="btn btn-mini">Cancel</a>
+  </span>
 <%end%>
+
+</div>
 <textarea id="source">
 </textarea>
 <div id="content" class="editable">

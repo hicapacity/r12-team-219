@@ -22,9 +22,10 @@ class Commit < ActiveRecord::Base
       blob = commit.tree
       path = Pathname.new(page.url_path + '.md')
       path.each_filename do |part|
-        blob = blob.find {|entry| entry[:name] == part}
+        blob_entry = blob.find {|entry| entry[:name] == part}
+        blob = repo.lookup(blob_entry[:oid])
       end
-      @markdown = repo.lookup(blob[:oid]).content
+      @markdown = blob.content
       @markdown_loaded = true
     end
     @markdown

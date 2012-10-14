@@ -53,6 +53,7 @@ function saveMarkdown() {
 }
 
 </script>
+Edited by <%= @page.author.email %> at <%= @page.updated_at %>
 <% if user_signed_in? %>
 <div>
   <a id="edit" href="#" class="btn btn-primary">Edit</a>

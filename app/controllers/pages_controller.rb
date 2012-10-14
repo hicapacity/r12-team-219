@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     @page = Page.where(:url_path => params[:url_path]).first
     @url_path = params[:url_path]
     @url_path_components = params[:url_path].split('/')
+    puts params
 
     respond_with @page
   end

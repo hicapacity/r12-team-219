@@ -6,13 +6,7 @@ gem 'rugged', '0.17.0.b6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :development do
-  gem 'sqlite3'
-end
-
-group :production do
-  gem "mysql2"
-end
+gem 'sqlite3'
 
 gem 'devise'
 

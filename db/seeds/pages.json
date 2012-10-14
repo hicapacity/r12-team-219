@@ -5,7 +5,7 @@
       {
         "oid": "testoid1",
         "title": "hallojs",
-        "markdown": "markdown"
+        "markdown": "Please send an e-mail to [developers@plataformatec.com.br]"
       }
     ]
   },
@@ -15,17 +15,46 @@
       {
         "oid": "testoid2",
         "title": "foo",
-        "markdown": "markdown"
+        "markdown": "see if it was already reported / fixed. In case it was not, create your"
       }
     ]
   },
   {
     "url_path": "hallojs\/bar",
     "commits_attributes": [
-      {
-        "oid": "testoid3",
+      { "oid": "testoid3",
         "title": "bar",
-        "markdown": "markdown"
+        "markdown": "(https://github.com/plataformatec/devise/wiki)"
+      }
+    ]
+  },
+  {
+    "url_path": "hallojs\/bar\/food",
+    "commits_attributes": [
+      {
+        "oid": "testoid4",
+        "title": "food",
+        "markdown": "Do not post questions in the issues tracker."
+      }
+    ]
+  },
+  {
+    "url_path": "hellojs\/cat\/fish\/grass",
+    "commits_attributes": [
+      {
+        "oid": "testoid5",
+        "title": "grass",
+        "markdown": "### Please read before contributing"
+      }
+    ]
+  },
+  {
+    "url_path": "hellojs\/cat\/fish\/grass\/water",
+    "commits_attributes": [
+      {
+        "oid": "testoid6",
+        "title": "water",
+        "markdown": "2) If you find a security bug, **DO NOT** submit an issue here. "
       }
     ]
   }

@@ -1,12 +1,12 @@
 class PagesController < ApplicationController
   respond_to :html, :json
   def index
-    pages = Page.all
-    render :text => pages.to_json 
+    @pages = Page.all
   end
 
   def show
     @page = Page.where(:url_path => params[:url_path]).first
+    @url_path_components = params[:url_path].split('/')
   end
 
   def create

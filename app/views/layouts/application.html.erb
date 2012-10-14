@@ -12,31 +12,7 @@
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
- 
-  <div id="container">
-    <%- flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-    <%- end -%>
 
-    <% if user_signed_in? -%>
-      <div id="user_login_box" style = "float:right">
-        Hello. 
-        <% if current_user.nick_name != nil && current_user.nick_name != ""%>
-          <%= current_user.nick_name %>
-        <% else %>
-          <%= current_user.first_name %> 
-          <%= current_user.last_name %> |
-        <% end -%>
-        <%= link_to 'My info', edit_user_registration_path %> |
-        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
-      </div>
-    <% else %>
-      <div id="user_signup_box" style = "float:right">
-        <%= link_to 'Sign up', new_user_registration_path %> | 
-        <%= link_to 'Sign in', new_user_session_path %> 
-    <% end -%>
-    <div style="clear:both"></div>
-  </div>
       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
         <span class="icon-bar"></span>
@@ -50,6 +26,18 @@
       <!-- Everything you want hidden at 940px or less, place within here -->
       <div class="nav-collapse">
         <!-- .nav, .navbar-search, .navbar-form, etc -->
+      <% if user_signed_in? -%>
+      <div id="user_login_box" class="navbar-text pull-right">
+        Hello
+        <%= current_user.email %> 
+        <%= link_to 'My info', edit_user_registration_path %> |
+        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+      </div>
+    <% else %>
+      <div id="user_signup_box" class="navbar-text pull-right">
+        <%= link_to 'Sign up', new_user_registration_path %> | 
+        <%= link_to 'Sign in', new_user_session_path %> 
+    <% end -%>
       </div>
  
     </div>
@@ -57,10 +45,25 @@
 </div>  
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span2">
-      <!--Sidebar content-->
-    </div>
-    <div class="span10">
+    <div class="span12">
+      <%- flash.each do |name, msg| -%>
+        <% if flash[:error] -%>
+          <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <%= flash[:error] %>
+          </div>
+        <% elsif flash[:notice] %> 
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <%= flash[:notice] %>
+          </div>
+        <% elsif flash[:alert] %> 
+          <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <%= flash[:alert] %>
+          </div>   
+        <% end -%>
+      <%- end -%>
       <!--Body content-->
       <%= yield %>
     </div>

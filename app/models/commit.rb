@@ -14,7 +14,7 @@ class Commit < ActiveRecord::Base
     commit.user = page.author
     commit
   end
-  
+
   def markdown
     unless @markdown_loaded
       repo = Rugged::Repository.new(Rails.root.join('..', 'wikifiles').to_s)

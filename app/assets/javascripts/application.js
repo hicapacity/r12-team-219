@@ -15,4 +15,5 @@
 //= require bootstrap.min
 //= require showdown
 //= require to-markdown
-//= require editor
+//= require mousetrap
+

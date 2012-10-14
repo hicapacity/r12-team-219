@@ -67,17 +67,15 @@ class Page < ActiveRecord::Base
   end
 
   def get_latest_version
-    @latest_commit = self.commits.ordered_by_date.first
+    @latest_commit = self.commits.first
   end
   
   def save_to_repo
     if @markdown_dirty
       commits << Commit.create_commit(self)
       @markdown_dirty = false
-      true
-    else
-      true
     end
+    true
   end
   
   def erase_from_repo

@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014005525) do
+ActiveRecord::Schema.define(:version => 20121014100055) do
 
   create_table "commits", :force => true do |t|
     t.string   "oid"
     t.string   "title"
     t.integer  "user_id"
     t.integer  "page_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.text     "markdown_temp"
   end
 
   add_index "commits", ["oid"], :name => "index_commits_on_oid"

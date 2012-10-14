@@ -1,3 +1,4 @@
 class Page < ActiveRecord::Base
-  attr_accessible :url_path, :title, :author, :markdown, :timestamps 
+  has_many :commits
+  attr_accessible :url_path, :timestamps 
 end

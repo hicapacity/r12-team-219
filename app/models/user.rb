@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :commits
   validates_presence_of :first_name, :last_name
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

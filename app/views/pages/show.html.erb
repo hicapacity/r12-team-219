@@ -6,17 +6,27 @@ $(function() {
  // Forcing Hallo to update HTML after loading the markdown
  var e = jQuery.Event('keyup');
  jQuery('#source').trigger(e);
+
+  jQuery('#source').hide();
+  jQuery('#content').hallo({editable: false});
+
+ jQuery('#edit').click(function() {
+  jQuery('#source').show();
+  jQuery('#content').hallo({editable: true});
+ });
 });
 </script>
 
 <% if @page %>
 <div>
-  <a href="#" class="btn btn-primary">Edit</a>
+  <a id="edit" href="#" class="btn btn-primary">Edit</a>
+  <a id="save" href="#" class="btn btn-primary">Save</a>
+  <a id="cancel" href="#" class="btn">Cancel</a>
 </div>
 <textarea id="source">
 </textarea>
-<div class="editable">
+<div id="content" class="editable">
 </div>
 <% else %>
-<a href="#">Create</a>
+<a href="#" class="btn btn-primary">Create</a>
 <% end %>

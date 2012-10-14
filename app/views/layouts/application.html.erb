@@ -26,9 +26,9 @@
       <!-- Everything you want hidden at 940px or less, place within here -->
       <div class="nav-collapse">
         <!-- .nav, .navbar-search, .navbar-form, etc -->
-            <% if user_signed_in? -%>
+      <% if user_signed_in? -%>
       <div id="user_login_box" class="navbar-text pull-right">
-        Hello.
+        Hello
         <%= current_user.email %> 
         <%= link_to 'My info', edit_user_registration_path %> |
         <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>

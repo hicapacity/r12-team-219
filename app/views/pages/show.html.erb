@@ -28,7 +28,7 @@ $(function() {
   $('#cancel').show();
  });
 
- $('#save').click(endEditing);
+ $('#save').click(saveMarkdown);
 
  $('#cancel').click(endEditing);
 });
@@ -40,6 +40,16 @@ function endEditing() {
   $('#source').hide();
   $('#content').hallo({editable: false});
 }
+
+function saveMarkdown() {
+  var updatedPage = { url_path: "<%= @page.url_path %>", markdown: $('#source').val() };
+  $.post('/pages/<%= @page.url_path %>', updatedPage, function(data) {
+    console.log(data);
+  });
+
+  endEditing();
+}
+
 </script>
 <% if user_signed_in? %>
 <div>
@@ -56,6 +66,10 @@ function endEditing() {
 <script type="text/javascript">
 $(function () {
   $('#create').click(function() {
+    var newPage = { url_path: "<%= @url_path %>", markdown: "# New Page" };
+    $.post('/pages/<%= @url_path %>', newPage, function(data) {
+      console.log(data);
+    });
 
   });
 });

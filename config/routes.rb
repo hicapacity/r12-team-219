@@ -2,7 +2,7 @@ Nexus::Application.routes.draw do
   devise_for :users
   get 'pages' => 'pages#index'
   get 'pages/*url_path' => 'pages#show'
-  post 'pages/*url_path' => 'pages#create'
+  post 'pages/*url_path' => 'pages#post'
 
   root :to => 'home#index'
 

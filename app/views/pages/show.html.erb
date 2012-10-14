@@ -32,6 +32,12 @@ $(function() {
  $('#save').click(saveMarkdown);
  $('#show-md-editor').click(function() {
    $('#source').toggle()
+   if ($('#source').is(":visible")) {
+     $('#show-md-editor').text('Hide Markdown');
+   }
+   else {
+     $('#show-md-editor').text('Show Markdown');
+   }
  });
 
  $('#cancel').click(endEditing);
@@ -67,7 +73,7 @@ function saveMarkdown() {
   <span style="margin-left: 20px">
   <a id="edit" href="#" class="btn btn-mini btn-primary">Edit</a>
   <a id="save" href="#" class="btn btn-mini btn-primary">Save</a>
-  <a id="show-md-editor" href="#" class="btn btn-mini">Show/Hide Markdown</a>
+  <a id="show-md-editor" href="#" class="btn btn-mini">Show Markdown</a>
   <a id="cancel" href="#" class="btn btn-mini">Cancel</a>
   </span>
 <%end%>

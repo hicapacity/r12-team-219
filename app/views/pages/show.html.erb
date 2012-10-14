@@ -1,18 +1,18 @@
 <script type="text/javascript">
 $(function() {
  // Handler for .ready() called.
- jQuery('#source').val('markdown');
+ $('#source').val('#HELLO');
 
- // Forcing Hallo to update HTML after loading the markdown
- var e = jQuery.Event('keyup');
- jQuery('#source').trigger(e);
+  // Forcing Hallo to update HTML after loading the markdown
+  var e = $.Event('keyup');
+  $('#source').trigger(e);
 
-  jQuery('#source').hide();
-  jQuery('#content').hallo({editable: false});
+  $('#source').hide();
+  $('#content').hallo({editable: false});
 
- jQuery('#edit').click(function() {
-  jQuery('#source').show();
-  jQuery('#content').hallo({editable: true});
+ $('#edit').click(function() {
+  $('#source').show();
+  $('#content').hallo({editable: true});
  });
 });
 </script>

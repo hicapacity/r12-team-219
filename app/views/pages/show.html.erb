@@ -85,6 +85,7 @@ function saveMarkdown() {
 <div id="content" class="editable">
 </div>
 <% else %>
+<% if user_signed_in? %>
 <script type="text/javascript">
 $(function () {
   $('#create').click(function() {
@@ -97,4 +98,5 @@ $(function () {
 });
 </script>
 <a id="create" href="#" class="btn btn-primary">Create</a>
+<% end %>
 <% end %>

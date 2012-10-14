@@ -7,7 +7,13 @@ class PagesController < ApplicationController
   def show
     @page = Page.where(:url_path => params[:url_path]).first
     @url_path = params[:url_path]
-    @url_path_components = params[:url_path].split('/')
+    path_components = params[:url_path].split('/')
+
+    base_path = "/pages"
+    @url_path_components = path_components.map do |pc|
+      base_path += "/#{pc}"
+      { text: pc, url_path: base_path }
+    end
 
     respond_with @page
   end

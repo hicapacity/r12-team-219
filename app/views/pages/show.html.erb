@@ -70,7 +70,7 @@ $(function () {
   $('#create').click(function() {
     var newPage = { url_path: "<%= @url_path %>", markdown: "# New Page" };
     $.post('/pages/<%= @url_path %>', newPage, function(data) {
-      console.log(data);
+      window.location.reload();
     });
 
   });

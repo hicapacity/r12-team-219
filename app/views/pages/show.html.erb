@@ -2,12 +2,12 @@
 <script type="text/javascript">
 $(function() {
   // Handler for .ready() called.
-  jQuery('#source').val(<%= raw(@page.markdown.to_json) %>);
-  // jQuery('#source').val('#HELLO');
+  $('#source').val(<%= raw(@page.markdown.to_json) %>);
+  // $('#source').val('#HELLO');
 
   // Forcing Hallo to update HTML after loading the markdown
-  var e = jQuery.Event('keyup');
-  jQuery('#source').trigger(e);
+  var e = $.Event('keyup');
+  $('#source').trigger(e);
 
   endEditing();
 
@@ -44,5 +44,12 @@ function endEditing() {
 <div id="content" class="editable">
 </div>
 <% else %>
-<a href="#" class="btn btn-primary">Create</a>
+<script type="text/javascript">
+$(function () {
+  $('#create').click(function() {
+    
+  });
+});
+</script>
+<a id="create" href="#" class="btn btn-primary">Create</a>
 <% end %>

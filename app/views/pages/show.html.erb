@@ -1,5 +1,22 @@
+<script type="text/javascript">
+$(function() {
+ // Handler for .ready() called.
+ jQuery('#source').val(<%= raw(@page.markdown.to_json) %>);
+
+ // Forcing Hallo to update HTML after loading the markdown
+ var e = jQuery.Event('keyup');
+ jQuery('#source').trigger(e);
+
+  jQuery('#source').hide();
+  jQuery('#content').hallo({editable: false});
+
+ jQuery('#edit').click(function() {
+  jQuery('#source').show();
+  jQuery('#content').hallo({editable: true});
+ });
+});
+</script>
 <% if @page %>
-<script type="text/javascript" src="/assets/show.js"></script>
 <% if user_signed_in? %>
 <div>
   <a id="edit" href="#" class="btn btn-primary">Edit</a>

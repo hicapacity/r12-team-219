@@ -67,7 +67,7 @@ class Page < ActiveRecord::Base
   end
 
   def get_latest_version
-    @latest_commit = self.commits.first
+    @latest_commit = self.commits.ordered_by_date.first
   end
   
   def save_to_repo

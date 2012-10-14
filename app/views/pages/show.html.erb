@@ -59,6 +59,7 @@ function saveMarkdown() {
   var updatedPage = { url_path: "<%= @page.url_path %>", markdown: $('#source').val() };
   $.post('/pages/<%= @page.url_path %>', updatedPage, function(data) {
     console.log(data);
+    window.location.reload(true);
   });
 
   endEditing();
@@ -68,7 +69,7 @@ function saveMarkdown() {
 <div class="mod-text">
   <span class="label"><%= @page.author.email %></span> 
   edited at
-  <span class="mod-date"><%= @page.updated_at.strftime("%I:%M%P %B %d, %Y") %></span>
+  <span class="mod-date"><%= @page.latest_updated_at.strftime("%I:%M%P %B %d, %Y") %></span>
 
 <% if user_signed_in? %>
   <span style="margin-left: 20px">

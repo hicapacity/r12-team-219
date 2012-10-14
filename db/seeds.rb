@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user1 = User.create(:email => "test@gmail.com", :password => "1234567")
+user1 = User.create(:email => "test1@gmail.com", :password => "1234567")
 p = Page.new
 p.url_path = "test"
 p.title = "Test Page"
@@ -18,7 +18,7 @@ p.title = "changed title"
 p.markdown = "changed markdown"
 p.save
 
-user2 = User.create(:email => "test1@gmail.com", :password => "1234567")
+user2 = User.create(:email => "test2@gmail.com", :password => "1234567")
 p = Page.new
 p.url_path = "test2"
 p.title = "Test2 Page"
@@ -31,6 +31,6 @@ p.markdown = "changed markdown 2"
 p.author = user2
 p.save
 
-#p.author = user1
-#p.save
+p.author = user1
+p.save
 

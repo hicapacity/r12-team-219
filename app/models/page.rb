@@ -23,6 +23,11 @@ class Page < ActiveRecord::Base
     @title_dirty = true
     self
   end
+
+  def latest_updated_at
+    get_latest_version unless @latest_commit
+    @latest_commit.updated_at
+  end
   
   def markdown
     unless @markdown_loaded
@@ -40,6 +45,7 @@ class Page < ActiveRecord::Base
     @markdown_dirty = true
     self
   end
+
   
   def author
     unless @author_loaded

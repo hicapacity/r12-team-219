@@ -1,21 +1,3 @@
-<script type="text/javascript">
-$(function() {
- // Handler for .ready() called.
- jQuery('#source').val(<%= raw(@page.markdown.to_json) %>);
-
- // Forcing Hallo to update HTML after loading the markdown
- var e = jQuery.Event('keyup');
- jQuery('#source').trigger(e);
-
-  jQuery('#source').hide();
-  jQuery('#content').hallo({editable: false});
-
- jQuery('#edit').click(function() {
-  jQuery('#source').show();
-  jQuery('#content').hallo({editable: true});
- });
-});
-</script>
 <ul class="breadcrumb">
   <li><a href="/pages">Home</a>
   <% @url_path_components.each do |pc| %>
@@ -25,19 +7,58 @@ $(function() {
   </li>
 </ul>
 <% if @page %>
-  <% if user_signed_in? %>
-  <div>
-   <a id="edit" href="#" class="btn btn-primary">Edit</a>
-   <a id="save" href="#" class="btn btn-primary">Save</a>
-   <a id="cancel" href="#" class="btn">Cancel</a>
-  </div>
-  <% end %>
+<script type="text/javascript" src="/assets/editor.js"></script>
+<script type="text/javascript">
+$(function() {
+  // Handler for .ready() called.
+  //$('#source').val(<%#= raw(@page.markdown.to_json) %>);
+  $('#source').val('#HELLO');
+
+  // Forcing Hallo to update HTML after loading the markdown
+  var e = $.Event('keyup');
+  $('#source').trigger(e);
+
+  endEditing();
+
+ $('#edit').click(function() {
+  $('#source').show();
+  $('#content').hallo({editable: true});
+  $('#edit').hide();
+  $('#save').show();
+  $('#cancel').show();
+ });
+
+ $('#save').click(endEditing);
+
+ $('#cancel').click(endEditing);
+});
+
+function endEditing() {
+  $('#edit').show();
+  $('#save').hide();
+  $('#cancel').hide();
+  $('#source').hide();
+  $('#content').hallo({editable: false});
+}
+</script>
+<% if user_signed_in? %>
+<div>
+  <a id="edit" href="#" class="btn btn-primary">Edit</a>
+  <a id="save" href="#" class="btn btn-primary">Save</a>
+  <a id="cancel" href="#" class="btn">Cancel</a>
+</div>
+<%end%>
 <textarea id="source">
 </textarea>
 <div id="content" class="editable">
 </div>
 <% else %>
-  <% if user_signed_in? %>
-    <a href="#" class="btn btn-primary">Create</a>
-  <% end %>
+<script type="text/javascript">
+$(function () {
+  $('#create').click(function() {
+
+  });
+});
+</script>
+<a id="create" href="#" class="btn btn-primary">Create</a>
 <% end %>

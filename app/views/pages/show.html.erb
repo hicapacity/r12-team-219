@@ -11,8 +11,7 @@
 <script type="text/javascript">
 $(function() {
   // Handler for .ready() called.
-  //$('#source').val(<%#= raw(@page.markdown.to_json) %>);
-  $('#source').val('#HELLO');
+  $('#source').val(<%= raw(@page.markdown.to_json) %>);
 
   // Forcing Hallo to update HTML after loading the markdown
   var e = $.Event('keyup');

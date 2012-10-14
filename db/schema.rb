@@ -18,9 +18,8 @@ ActiveRecord::Schema.define(:version => 20121014084253) do
     t.string   "title"
     t.integer  "user_id"
     t.integer  "page_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.text     "markdown_temp"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "commits", ["oid"], :name => "index_commits_on_oid"

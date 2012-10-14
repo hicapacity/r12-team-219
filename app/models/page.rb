@@ -91,26 +91,41 @@ class Page < ActiveRecord::Base
     master_ref = Rugged::Reference.lookup repo, 'refs/heads/master'
     tree = repo.lookup(master_ref.target).tree
     path = Pathname.new(url_path).each_filename.to_a
-    filename = path.pop
+    filename = path.pop + '.md'
+    trees = []
     path.each do |part|
-      tree = tree.find {|entry| entry[:name] == part}
+      trees.unshift([part, tree])
+      unless tree.nil?
+        tree_entry = tree.find {|entry| entry[:name] == part}
+        tree = tree_entry.nil?() ? nil : repo.lookup(tree_entry[:oid])
+      end
     end
     
-    # add blob to tree
-    tree = Rugged::Tree::Builder.new tree
-    tree.remove filename
-    tree_id = tree.write repo
+    unless tree.nil?
+      # add blob to tree, and modify parent trees
+      builder = Rugged::Tree::Builder.new(tree)
+      builder.remove filename
+      tree_id = builder.write repo
+      trees.each do |parttree|
+        part, tree = parttree
+        builder = Rugged::Tree::Builder.new tree
+        builder << {:type => :tree, :name => part, :oid => tree_id, :filemode => 16384}
+        tree_id = builder.write repo
+      end
 
-    author_name = "#{author.first_name} #{author.last_name}".strip
-    author_name = author.email if author_name.blank?
-    auth = {:email => author.email, :name => author_name, :time => Time.now}
-    Rugged::Commit.create repo,
-      :author => auth,
-      :message => "Deleted #{url_path}",
-      :committer => auth,
-      :parents => [repo.head.target],
-      :update_ref => 'HEAD',
-      :tree => tree_id
+      # Commit
+      author_name = "#{author.first_name} #{author.last_name}".strip
+      author_name = author.email if author_name.blank?
+      auth = {:email => author.email, :name => author_name, :time => Time.now}
+      Rugged::Commit.create repo,
+        :author => auth,
+        :message => "Deleted #{url_path}",
+        :committer => auth,
+        :parents => [repo.head.target],
+        :update_ref => 'HEAD',
+        :tree => tree_id
+    end
+    
     true
   end
 end

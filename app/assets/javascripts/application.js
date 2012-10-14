@@ -15,5 +15,4 @@
 //= require bootstrap.min
 //= require showdown
 //= require to-markdown
-//= require mousetrap
 //= require jquery-ui.min

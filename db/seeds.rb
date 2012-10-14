@@ -34,3 +34,9 @@ p.save
 p.author = user1
 p.save
 
+p = Page.new
+p.url_path = 'test/nested'
+p.title = 'Nested Page'
+p.markdown = 'This is a nested page!'
+p.author = user1
+p.save

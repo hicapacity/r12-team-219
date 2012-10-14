@@ -2,7 +2,7 @@
   <li><a href="/pages">Home</a>
   <% @url_path_components.each do |pc| %>
   </li>
-  <li><a href="#"><%= pc %></a>
+  <li><a href="<%= pc[:url_path] %>"><%= pc[:text] %></a>
   <% end %>
   </li>
 </ul>

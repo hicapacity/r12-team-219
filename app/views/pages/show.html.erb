@@ -12,13 +12,8 @@
 <script type="text/javascript">
 $(function() {
   // Handler for .ready() called.
-  $('#source').val(<%= raw(@page.markdown.to_json) %>);
+  loadMarkdown();
 
-  // Forcing Hallo to update HTML after loading the markdown
-  var e = $.Event('keyup');
-  $('#source').trigger(e);
-
-  endEditing();
 
  $('#edit').click(function() {
   // $('#source').show();
@@ -41,7 +36,7 @@ $(function() {
    }
  });
 
- $('#cancel').click(endEditing);
+ $('#cancel').click(loadMarkdown);
 
  $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 });
@@ -61,6 +56,16 @@ function saveMarkdown() {
     console.log(data);
     window.location.reload(true);
   });
+
+  endEditing();
+}
+
+function loadMarkdown() {
+  $('#source').val(<%= raw(@page.markdown.to_json) %>);
+
+  // Forcing Hallo to update HTML after loading the markdown
+  var e = $.Event('keyup');
+  $('#source').trigger(e);
 
   endEditing();
 }

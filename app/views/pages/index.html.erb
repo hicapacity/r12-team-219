@@ -1,0 +1,5 @@
+<% @pages.each do |page| %>
+<div>
+  <a href="/pages/<%= page.url_path %>"><%= page.url_path %></a>
+</div>
+<% end %>

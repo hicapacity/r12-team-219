@@ -96,5 +96,10 @@ textarea#source {
 
 .mod-text {
   color: #aaa;
-  font-style: oblique;
+  margin-bottom: 10px;
+}
+
+.mod-date {
+  color: #555;
+  font-style: italic;
 }

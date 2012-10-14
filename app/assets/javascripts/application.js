@@ -16,4 +16,5 @@
 //= require showdown
 //= require to-markdown
 //= require mousetrap
-
+//= require highlight.pack
+//= require editor

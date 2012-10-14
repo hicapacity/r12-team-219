@@ -3,16 +3,13 @@
 $(function() {
   // Handler for .ready() called.
   jQuery('#source').val(<%= raw(@page.markdown.to_json) %>);
-  //jQuery('#source').val('#HELLO');
+  // jQuery('#source').val('#HELLO');
 
- // Forcing Hallo to update HTML after loading the markdown
- var e = jQuery.Event('keyup');
- jQuery('#source').trigger(e);
+  // Forcing Hallo to update HTML after loading the markdown
+  var e = jQuery.Event('keyup');
+  jQuery('#source').trigger(e);
 
-  $('#source').hide();
-  $('#content').hallo({editable: false});
-  $('#save').hide();
-  $('#cancel').hide();
+  endEditing();
 
  $('#edit').click(function() {
   $('#source').show();
@@ -21,7 +18,19 @@ $(function() {
   $('#save').show();
   $('#cancel').show();
  });
+
+ $('#save').click(endEditing);
+
+ $('#cancel').click(endEditing);
 });
+
+function endEditing() {
+  $('#edit').show();
+  $('#save').hide();
+  $('#cancel').hide();
+  $('#source').hide();
+  $('#content').hallo({editable: false});
+}
 </script>
 <% if user_signed_in? %>
 <div>

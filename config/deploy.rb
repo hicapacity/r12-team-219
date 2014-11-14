@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-server "74.207.247.71", :web, :app, :db, primary: true
+server "SERVER IP ADDRESS HERE", :web, :app, :db, primary: true
 
 set :application, "nexus"
 set :user, "deployer"
